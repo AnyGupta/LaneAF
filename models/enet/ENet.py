@@ -66,6 +66,10 @@ class ENet(nn.Module):
                            down_flag=False, 
                            p=0.01)
         
+        self.b15 = TransConvFPN(in_channels=64, 
+                           out_channels=64, 
+                           num_outs=3,
+                           trans_idx=-1)
         
         # The second bottleneck
         self.b20 = RDDNeck(dilation=1, 
@@ -109,6 +113,10 @@ class ENet(nn.Module):
                            out_channels=128, 
                            down_flag=False)
         
+        self.b29 = TransConvFPN(in_channels=128, 
+                           out_channels=64, 
+                           num_outs=3,
+                           trans_idx=-1)
         
         # The third bottleneck
         self.b31 = RDDNeck(dilation=1, 
@@ -147,6 +155,10 @@ class ENet(nn.Module):
                            out_channels=128, 
                            down_flag=False)
         
+        self.b39 = TransConvFPN(in_channels=128, 
+                           out_channels=64, 
+                           num_outs=3,
+                           trans_idx=-1)
         
         # The fourth bottleneck
         self.b40 = UBNeck(in_channels=128, 
@@ -164,6 +176,7 @@ class ENet(nn.Module):
                            out_channels=64, 
                            down_flag=False, 
                            relu=True)
+        
         
         # # The fifth bottleneck
         # self.b50 = UBNeck(in_channels=64, 
@@ -229,6 +242,7 @@ class ENet(nn.Module):
         x = self.b12(x)
         x = self.b13(x)
         x = self.b14(x)
+        x = self.b15(x)
         
         # The second bottleneck
         x, i2 = self.b20(x)
@@ -240,6 +254,7 @@ class ENet(nn.Module):
         x = self.b26(x)
         x = self.b27(x)
         x = self.b28(x)
+        x = self.b29(x)
         
         # The third bottleneck
         x = self.b31(x)
@@ -250,6 +265,7 @@ class ENet(nn.Module):
         x = self.b36(x)
         x = self.b37(x)
         x = self.b38(x)
+        x = self.b39(x)
         
         # The fourth bottleneck
         x = self.b40(x, i2)
