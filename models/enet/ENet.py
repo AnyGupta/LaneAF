@@ -68,8 +68,7 @@ class ENet(nn.Module):
         
         self.b15 = TransConvFPN(in_channels=64, 
                            out_channels=64, 
-                           num_outs=3,
-                           trans_idx=-1)
+                           num_outs=3)
         
         # The second bottleneck
         self.b20 = RDDNeck(dilation=1, 
@@ -115,8 +114,7 @@ class ENet(nn.Module):
         
         self.b29 = TransConvFPN(in_channels=128, 
                            out_channels=64, 
-                           num_outs=3,
-                           trans_idx=-1)
+                           num_outs=3)
         
         # The third bottleneck
         self.b31 = RDDNeck(dilation=1, 
@@ -157,8 +155,7 @@ class ENet(nn.Module):
         
         self.b39 = TransConvFPN(in_channels=128, 
                            out_channels=64, 
-                           num_outs=3,
-                           trans_idx=-1)
+                           num_outs=3)
         
         # The fourth bottleneck
         self.b40 = UBNeck(in_channels=128, 
