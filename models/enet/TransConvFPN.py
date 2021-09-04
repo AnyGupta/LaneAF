@@ -5,6 +5,7 @@ import torch.nn.functional as F
 from mmcv.cnn import ConvModule, xavier_init
 
 from fp16.decorators import auto_fp16
+from builder import NECKS
 
 class PositionEmbeddingSine(nn.Module):
     """
