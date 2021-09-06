@@ -20,6 +20,7 @@ from .InitialBlock import InitialBlock
 from .RDDNeck import RDDNeck
 from .UBNeck import UBNeck
 from .ASNeck import ASNeck
+from .TransConvFPN import TransConvFPN
 
 def fill_fc_weights(layers):
     for m in layers.modules():
