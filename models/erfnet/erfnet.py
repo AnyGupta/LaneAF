@@ -77,6 +77,7 @@ class Encoder(nn.Module):
             self.layers.append(non_bottleneck_1d(128, 0.3, 4))
             self.layers.append(non_bottleneck_1d(128, 0.3, 8))
             self.layers.append(non_bottleneck_1d(128, 0.3, 16))
+            self.layers.append(TransConvFPN(in_channels=128, out_channels=64, num_outs=3))
 
         #Only in encoder mode:
         self.output_conv = nn.Conv2d(128, num_classes, 1, stride=1, padding=0, bias=True)
@@ -115,6 +116,7 @@ class Decoder (nn.Module): # modified decoder for LaneAF
 
         self.layers.append(non_bottleneck_1d(64, 0, 1))
         self.layers.append(non_bottleneck_1d(64, 0, 1))
+        self.layers.append(TransConvFPN(in_channels=64, out_channels=64, num_outs=3))
 
     def forward(self, input):
         output = input
